@@ -1,0 +1,62 @@
+<script>
+
+function lw(){
+	var i=document.getElementById("in1").value
+	
+	var xhr=new XMLHttpRequest();
+	xhr.open("GET","http://192.168.43.42/cgi-bin/docker_ui_server.py?x="+i,true);
+	xhr.send();
+
+
+	xhr.onload=function(){
+		var output=xhr.responseText;
+		document.getElementById("d3").innerHTML=output;
+
+	}
+
+}
+
+</script>
+<html>
+<head>
+	<style>
+	  body{
+		background-color:#c8ebef;
+		
+	}
+	#d2{
+		background-color:#86b6dd;
+		width:300px;
+		height:150px;
+		padding:5px;
+		border-radius:25px;
+	}
+	#d3{
+		background-color:#86b6dd;
+		width:600px;
+		height:300px;	
+	}	
+	</style>
+</head>
+<body>
+  <center>
+	<div>
+	  <h1>DOCKER UI</h1>
+	</div><br>
+	<div id="d2">
+	
+	  <h3>Enter docker command:</h3>
+	  <input id="in1" type="text"><br><br>
+	<button onclick="lw();" type=submit>Submit</button>
+	</div><br>
+	<h3>OUTPUT</h3><br>
+	<pre>
+	<div id="d3">
+	 
+	</div>
+	</pre>
+  </center>
+</body>
+</html>
+
+
